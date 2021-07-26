@@ -3,7 +3,7 @@
 
 微信公众号 ： 鸣人哈说Java
 
-![img](file:///E:\360MoveData\Users\lenovo\Documents\Tencent Files\2716013756\Image\C2C\@PLGDP4B6C46A84WQ@HAIMJ.png)
+![WfAWgf.png](https://z3.ax1x.com/2021/07/26/WfAWgf.md.png)
 
 **买家（手机端）**
 
@@ -13,15 +13,15 @@
 
 类目增删--商品上下架--接单--查询订单--取消订单
 
-![img](file:///E:\360MoveData\Users\lenovo\Documents\Tencent Files\2716013756\Image\C2C\RQ0VROD_IVU~Q4U0X$0__$O.png)
+![WfATEj.png](https://z3.ax1x.com/2021/07/26/WfATEj.md.png)
 
-![img](file:///E:\360MoveData\Users\lenovo\Documents\Tencent Files\2716013756\Image\C2C\KYGE]3TZAL@3Y_{FXI~9QFA.png)
+![WfA7Us.png](https://z3.ax1x.com/2021/07/26/WfA7Us.md.png)
 
-![img](file:///E:\360MoveData\Users\lenovo\Documents\Tencent Files\2716013756\Image\C2C\QR15UF`K]X{FFQ`N9{Z{6]9.png)
+
 
 项目展示：（学生党个人无法申请微信支付账号以及服务号，展示只能本地展示）
 
-![](E:\360MoveData\Users\lenovo\Desktop\QQ图片20210726153120.png)
+![WfeQi9.png](https://z3.ax1x.com/2021/07/26/WfeQi9.png)
 
 
 
@@ -41,7 +41,7 @@ GET /sell/buyer/product/list
 
 返回
 
-![image-20210726154430851](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20210726154430851.png)
+![WfA5Dg.png](https://z3.ax1x.com/2021/07/26/WfA5Dg.png)
 
 \###创建订单
 
@@ -88,7 +88,7 @@ page: 0 //从第0页开始
 size: 10
 ```
 
-![image-20210726155058793](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20210726155058793.png)
+![WfAfv8.png](https://z3.ax1x.com/2021/07/26/WfAfv8.md.png)
 
 \###查询订单详情
 
@@ -146,11 +146,11 @@ http://xxx.com/abc?openid=oZxSYw5ldcxv6H0EU67GgSXOUrVg
 
 \###支付订单(这需要微信支付权限和服务号)
 
-![img](file:///E:\360MoveData\Users\lenovo\Documents\Tencent Files\2716013756\Image\C2C\`IXD0QY]4N__C%8]AU0XIKV.png)
+![WfA4KS.png](https://z3.ax1x.com/2021/07/26/WfA4KS.png)
 
 # 微信点餐数据库
 
-![image-20210726160008832](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20210726160008832.png)
+![WfAIbQ.png](https://z3.ax1x.com/2021/07/26/WfAIbQ.md.png)
 
 ```sql
 -- 类目
