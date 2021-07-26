@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--        public interface CategoryDao {-->
+<!--        //通过类目编号找类目-->
+<!--        ProductCategory findOne(Integer categoryId);-->
+<!--        //找到所有的类目-->
+<!--        List<ProductCategory> findAll();-->
+<!--    //通过多个类目编号找多个类目-->
+<!--    List<ProductCategory> findByCategoryTypeIn(List<Integer> categoryTypeList);-->
+<!--        //保存类目-->
+<!--        ProductCategory save(ProductCategory productCategory);-->
+<!--        }-->
+<mapper namespace="com.mengzhiayuan.naruto.dao.CategoryDao">
+<!--    //通过类目编号找类目-->
+    <select id="findOne" resultType="com.mengzhiayuan.naruto.entity.ProductCategory">
+        select w.category_id,w.category_name,w.category_type,w.createtime,w.updatetime
+        from weixingorder.product_category w
+        where w.category_id=#{categoryId};
+    </select>
+<!--    //找到所有的类目-->
+<!--    返回List<String>集合时，需要将resultType的值定义为集合中元素类型，而不是返回集合本身-->
+    <select id="findAll" resultType="com.mengzhiayuan.naruto.entity.ProductCategory">
+        select w.category_id,w.category_name,w.category_type,w.createtime,w.updatetime
+        from weixingorder.product_category w
+    </select>
+
+    <!--    //通过多个类目编号找多个类目    这里还是resultType mybatis 会自动封装,多个结果集-->
+    <select id="findByCategoryTypeIn" resultType="com.mengzhiayuan.naruto.entity.ProductCategory">
+        select w.category_id,w.category_name,w.category_type,w.createtime,w.updatetime
+        from weixingorder.product_category w
+        where category_type in
+        <foreach collection="list" item="catagory_type" index="index" open="(" close=")" separator=",">
+            #{catagory_type}
+        </foreach>
+    </select>
+
+    <!--        //保存类目-->
+    <insert id="save" parameterType="com.mengzhiayuan.naruto.entity.ProductCategory">
+        insert into weixingorder.product_category (category_id, category_name, category_type,createtime, updatetime)
+        values(#{categoryId}, #{categoryName}, #{categoryType}, #{createTime}, #{updateTime})
+    </insert>
+
+
+
+</mapper>
+

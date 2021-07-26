@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mengzhiayuan.naruto.dao.OrderMasterDao">
+
+<!--    List<OrderMaster> findByBuyerOpenid(String buyerOpenid);-->
+<!--    void save(OrderMaster orderMaster);-->
+<!--    OrderMaster findOne(String orderId);-->
+<!--    int updateStatus(OrderMaster orderMaster);-->
+
+    <insert id="save" parameterType="com.mengzhiayuan.naruto.entity.OrderMaster">
+        insert into weixingorder.order_master
+            (order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount, order_status, pay_status)
+            values(#{orderId},#{buyerName},#{buyerPhone},#{buyerAddress},#{buyerOpenid},#{orderAmount},#{orderStatus},#{payStatus})
+    </insert>
+
+    <select id="findByBuyerOpenid" resultType="com.mengzhiayuan.naruto.entity.OrderMaster">
+        select order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount, order_status, pay_status, cretetime, updatetime
+        from order_master
+        where buyer_openid = #{buyerOpenId}
+    </select>
+
+    <select id="findOne" resultType="com.mengzhiayuan.naruto.entity.OrderMaster">
+        select order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount, order_status, pay_status, cretetime, updatetime
+        from order_master o
+        where order_id=#{orderId}
+    </select>
+
+    <update id="updateStatus" parameterType="com.mengzhiayuan.naruto.entity.OrderMaster">
+        update order_master set order_status=#{orderStatus},pay_status=#{payStatus}
+        where order_id=#{orderId}
+    </update>
+
+    <select id="findAll" resultType="com.mengzhiayuan.naruto.entity.OrderMaster">
+        select order_id, buyer_name, buyer_phone, buyer_address, buyer_openid, order_amount, order_status, pay_status, cretetime, updatetime
+        from order_master
+    </select>
+
+</mapper>

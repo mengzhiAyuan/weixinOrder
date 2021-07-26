@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--        //通过商品id找商品-->
+<!--        ProductInfo findOne(String productId);-->
+<!--        //通过状态码来找商品-->
+<!--        List<ProductInfo> findByProductStatus(Integer code);-->
+<!--        //找到所有的商品      》》》分页在service层执行-->
+<!--        List<ProductInfo> findAll();-->
+<!--        //存一个商品-->
+<!--        void save(ProductInfo productInfo);-->
+<mapper namespace="com.mengzhiayuan.naruto.dao.ProductDao">
+
+    <select id="findOne" resultType="com.mengzhiayuan.naruto.entity.ProductInfo">
+        select product_id, product_name, product_price, product_stock,
+               product_description, product_icon, category_type, createtime, updatetime,product_status
+        from weixingorder.product_info w
+        where product_id=#{productId};
+    </select>
+
+    <select id="findByProductStatus" resultType="com.mengzhiayuan.naruto.entity.ProductInfo">
+        select product_id, product_name, product_price, product_stock,
+               product_description, product_icon, category_type, createtime, updatetime,product_status
+        from weixingorder.product_info w
+        where product_status=#{productStatus};
+    </select>
+
+    <select id="findAll" resultType="com.mengzhiayuan.naruto.entity.ProductInfo">
+        select product_id, product_name, product_price, product_stock,
+               product_description, product_icon, category_type, createtime, updatetime,product_status
+        from weixingorder.product_info w
+    </select>
+
+    <insert id="save" parameterType="com.mengzhiayuan.naruto.entity.ProductInfo">
+        insert into weixingorder.product_info
+        (product_id, product_name, product_price, product_stock,
+        product_description, product_icon, category_type, createtime, updatetime,product_status)
+        values(#{productId}, #{productName}, #{productPrice}, #{productStock},
+               #{productDescription},#{productIcon}, #{categoryType}, #{createTime}, #{updateTime},#{productStatus})
+    </insert>
+
+<!--    改库存-->
+    <update id="update" parameterType="com.mengzhiayuan.naruto.entity.ProductInfo">
+        update weixingorder.product_info set product_stock=#{productStock}
+        where product_id=#{productId};
+    </update>
+
+</mapper>

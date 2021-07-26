@@ -1,0 +1,35 @@
+spring:
+  datasource:
+    username: root
+    password: zjz666666
+    url: jdbc:mysql://localhost:3306/weixingorder?useUnicode=true&serverTimezone=UTC&characterEncoding=utf-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+#    为了便于查询JSON数据，隐藏没有值的属性，减少流量的消耗，服务器不应该向客户端响应为null的属性！
+#  jackson:
+#    default-property-inclusion: non_null
+  freemarker:
+    cache: false
+
+#开启驼峰命名转换
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.mengzhiayuan.naruto.entity
+  configuration:
+    map-underscore-to-camel-case: true
+
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+#  应用的上下文路径，也可以称为项目路径，是构成url地址的一部分
+server:
+  servlet:
+    context-path: /sell
+
+wechat:
+  mpAppId: wx0e52271d332e0def
+  mpAppSecret: 79637dc1906d72fac1933051847f06b6
+
