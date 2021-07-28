@@ -2,10 +2,11 @@ package com.mengzhiayuan.naruto.enums;
 
 
 import lombok.Getter;
+import org.aspectj.apache.bcel.classfile.Code;
 
 
 @Getter
-public enum ProductStatusEnum {
+public enum ProductStatusEnum implements CodeEnum{
 
     UP(0,"在架"),
     DOWN(1,"下架")

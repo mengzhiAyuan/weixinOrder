@@ -17,6 +17,7 @@ import com.mengzhiayuan.naruto.exception.SellException;
 import com.mengzhiayuan.naruto.service.OrderService;
 import com.mengzhiayuan.naruto.service.PayService;
 import com.mengzhiayuan.naruto.service.ProductService;
+import com.mengzhiayuan.naruto.service.WebSocket;
 import com.mengzhiayuan.naruto.utils.KeyUtil;
 import com.mengzhiayuan.naruto.utils.OrderMasterShiftOrderDTO;
 import lombok.extern.slf4j.Slf4j;
@@ -54,6 +55,9 @@ public class OrderServiceImpl implements OrderService {
 
     @Autowired
     private PayService payService;
+
+    @Autowired
+    private WebSocket webSocket;
 
     //创建订单前检查是否有库存，从数据库里拿单价
     //前端不会传入所有数据 ，这里订单只会传入订单id 和 订单数量
@@ -104,6 +108,9 @@ public class OrderServiceImpl implements OrderService {
 
         //4.扣库存  注意！！！这里有线程安全问题
         productService.decreaseStock(cartDTOList);
+
+        //发送websocket 消息
+        webSocket.sendMessage(orderDTO.getOrderId());
 
         return orderDTO;
     }
@@ -230,7 +237,7 @@ public class OrderServiceImpl implements OrderService {
         return orderDTO;
     }
 
-    //卖家查询订单
+//    卖家查询订单
     @Override
     public PageInfo<OrderDTO> findList(int page,int pageSize) {
         //设置分页
@@ -238,5 +245,15 @@ public class OrderServiceImpl implements OrderService {
         List<OrderMaster> orderMasterList = orderMasterDao.findAll();
         List<OrderDTO> orderDTOList = OrderMasterShiftOrderDTO.convert(orderMasterList);
         return new PageInfo<>(orderDTOList);
+    }
+
+    @Override
+    public Page<OrderDTO> findList(Pageable pageable) {
+        PageHelper.startPage(pageable.getPageNumber(),pageable.getPageSize());
+        Page<OrderMaster> orderMasterPage = (Page<OrderMaster>) orderMasterDao.findAll();
+
+        List<OrderDTO> orderDTOList = OrderMasterShiftOrderDTO.convert(orderMasterPage.getContent());
+
+        return new PageImpl<>(orderDTOList, pageable, orderMasterPage.getTotalElements());
     }
 }

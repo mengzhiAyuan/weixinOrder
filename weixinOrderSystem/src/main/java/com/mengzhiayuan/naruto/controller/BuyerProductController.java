@@ -10,6 +10,7 @@ import com.mengzhiayuan.naruto.service.CategoryService;
 import com.mengzhiayuan.naruto.service.ProductService;
 import com.mengzhiayuan.naruto.utils.ResultVOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,7 @@ import java.util.List;
  * @date ：2021/7/20 12:18
  */
 
-// 买家api   商
+// 买家api
 
 @RestController
 @RequestMapping("/buyer/product")
@@ -37,6 +38,7 @@ public class BuyerProductController {
     private CategoryService categoryService;
 
     @GetMapping("/list")
+    @Cacheable(cacheNames = "product",key = "123")
     public ResultVO list(){
 
         //1.查询所有的上架商品

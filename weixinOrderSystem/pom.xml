@@ -63,6 +63,13 @@
             <version>1.1.21</version>
         </dependency>
 
+<!--        redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+
 <!--        pagehelper 是一个强大实用的 MyBatis 分页插件，可以帮助我们快速的实现MyBatis分页功能，-->
 <!--        而且pagehelper有个优点是，分页和Mapper.xml完全解耦，并以插件的形式实现，对Mybatis执行的流程进行了强化，-->
 <!--        这有效的避免了我们需要直接写分页SQL语句来实现分页功能-->
@@ -120,6 +127,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
 

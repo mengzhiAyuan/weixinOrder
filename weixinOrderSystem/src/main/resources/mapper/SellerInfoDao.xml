@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--        SellerInfo findByOpenid(String openid);-->
+<mapper namespace="com.mengzhiayuan.naruto.dao.SellerInfoDao">
+    <select id="findByOpenid" resultType="com.mengzhiayuan.naruto.entity.SellerInfo">
+        select seller_id, username, password, openid, create_time, update_time
+        from seller_info
+        where openid=#{openid}
+    </select>
+</mapper>

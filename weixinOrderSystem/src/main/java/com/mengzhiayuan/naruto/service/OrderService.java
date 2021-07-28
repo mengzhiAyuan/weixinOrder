@@ -3,6 +3,8 @@ package com.mengzhiayuan.naruto.service;
 
 import com.github.pagehelper.PageInfo;
 import com.mengzhiayuan.naruto.dto.OrderDTO;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface OrderService {
     /*创建订单*/
@@ -26,4 +28,5 @@ public interface OrderService {
     /*查询订单列表*/
     PageInfo<OrderDTO> findList(int page, int pageSize);
 
+    Page<OrderDTO> findList(Pageable pageable);
 }

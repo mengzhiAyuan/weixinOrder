@@ -1,5 +1,8 @@
 package com.mengzhiayuan.naruto.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.mengzhiayuan.naruto.enums.ProductStatusEnum;
+import com.mengzhiayuan.naruto.utils.EnumUtil;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,6 +36,32 @@ public class ProductInfo {
     private Integer productStatus;
     /*类目编号*/
     private Integer categoryType;
+
     private Date createTime;
     private Date updateTime;
+
+    @JsonIgnore
+    public ProductStatusEnum getProductStatusEnum() {
+        return EnumUtil.getByCode(productStatus, ProductStatusEnum.class);
+    }
+
+    /**
+     * 图片链接加host拼接成完整 url
+     * @param host
+     * @return
+     */
+    public ProductInfo addImageHost(String host) {
+        if (productIcon.startsWith("//") || productIcon.startsWith("http")) {
+            return this;
+        }
+
+        if (!host.startsWith("http")) {
+            host = "//" + host;
+        }
+        if (!host.endsWith("/")) {
+            host = host + "/";
+        }
+        productIcon = host + productIcon;
+        return this;
+    }
 }
