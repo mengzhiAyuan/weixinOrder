@@ -1,6 +1,8 @@
 # weixingOrder
 一个微信点餐系统(部分功能需要权限，后续继续完善)
 
+![Screenshot 2021 07 29 225519](https://z3.ax1x.com/2021/07/29/Wqgwzn.jpg)
+
 微信公众号 ： 鸣人哈说Java
 
 ![WfAWgf.png](https://z3.ax1x.com/2021/07/26/WfAWgf.md.png)
